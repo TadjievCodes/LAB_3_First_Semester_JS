@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Lab 3</title>
+</head>
+
+<body>
+
+    <h1> Fast food Ordering System Calculator</h1>
+    <br>
+
+    <h2>Daniel, Here's your order for the group of 4 people</h2>
+
+    <div id="display_1">
+
+
+
+    </div>
+
+
+    <div id="display_2">
+
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        var orders = prompt("Who is paying for the order?", "Tadjiev");
+        var OrderingPeopleAmount = parseInt(prompt("How many people are ordering the food?", "4"));
+
+        // Ordering variaables
+
+        var orderingNumber = 1; // its my counter variable here
+        var TotalOrders = 0;
+        var A = 0;
+        var B = 0;
+        var C = 0;
+        var D = 0;
+        var taxCalculation = 0;
+        var fee = 0;
+        var Servicefee = 0.03;
+        const HST_TAX = 0.13; // we declare a constant variable with a value of 0.13
+        var totalAmount = 0;
+
+        var order = " ";
+
+        while (orderingNumber <= OrderingPeopleAmount) {
+
+            order = prompt("Enter meal option (A, B, C, D, )" +
+
+                " #1 " + "\n" + " A - Hamburger and Fries, 9.95$ " + "\n" +
+                "B - Soup and Salad, 13.50$ " + "\n" +
+                "C - Turkey Wrap and Veggies, 7.95$ " + "\n" + "D - Hot Dog and Onion Rings , 11.50$ ");
+
+            if (order === "A") {
+                A += 1;
+                TotalOrders = TotalOrders + 9.95;
+                orderingNumber++;
+            } else if (order === "B") {
+                B += 1;
+                TotalOrders = TotalOrders + 13.50;
+                orderingNumber++;
+            } else if (order === "C") {
+                C += 1;
+                TotalOrders = TotalOrders + 7.95;
+                orderingNumber++;
+
+            } else if (order === "D") {
+                D += 1;
+                TotalOrders = TotalOrders + 11.50;
+                orderingNumber++;
+            }
+        }
+
+
+        var taxCalculation = TotalOrders * HST_TAX;
+        taxCalculation = Math.round(taxCalculation);
+
+        var fee = TotalOrders * Servicefee;
+        fee = Math.round(taxCalculation);
+
+        //calculate the TotalAmount through adding tax and subTotal amount and rounding the number in the end
+        var totalAmount = TotalOrders + taxCalculation;
+        totalAmount = Math.round(totalAmount);
+
+
+        var OutputAmount = Math.trunc(totalAmount);
+
+
+
+        var outputMessage = A + " of Meal Option A : " + '<br>' + B + " of Meal option B : " + '<br>' +
+            C + " of Meal option C : " + '<br>' + D + " of Meal Option D : ";
+        document.getElementById("display_1").innerHTML = outputMessage;
+
+        var displayMessage2 = ("Tax: " + taxCalculation + "<br>" +
+            "Service Fee: " + Servicefee + "<br>" +
+            "Total Bill: " + totalAmount);
+        document.getElementById("display_2").innerHTML = displayMessage2;
+    </script>
+
+</body>
+
+</html>
